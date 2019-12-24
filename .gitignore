@@ -1,0 +1,4 @@
+redux-httpd/certificates/*
+redux-mariadb/*.env
+db-data/*
+www-data/*

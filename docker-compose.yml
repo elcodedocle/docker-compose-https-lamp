@@ -1,0 +1,37 @@
+version: '2'
+services:
+    redux-server:
+        image: httpd:latest
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./redux-httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
+            - ./redux-httpd/httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf
+            - ./redux-httpd/php.conf:/usr/local/apache2/conf/extra/php.conf
+            - ./redux-httpd/certificates/server.crt:/usr/local/apache2/conf/server.crt
+            - ./redux-httpd/certificates/server.pem:/usr/local/apache2/conf/server.pem
+            - ./redux-httpd/certificates/server.ca-bundle:/usr/local/apache2/conf/server.ca-bundle
+            - ./www-data:/usr/local/apache2/htdocs
+        links:
+            - 'redux-php-fpm'
+
+    redux-php-fpm:
+        image: redux-php-fpm:latest
+        ports:
+            - 9000:9000
+        volumes:
+            - ./www-data:/usr/local/apache2/htdocs
+        links:
+            - 'mariadb'
+
+    mariadb:
+        image: mariadb:latest
+        ports:
+            - 3306:3306
+        volumes:
+            - ./db-data:/var/lib/mysql
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+        env_file:
+            - ./redux-mariadb/mariadb.env
