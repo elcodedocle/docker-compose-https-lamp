@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
         libonig-dev \
         libzip-dev \
     && docker-php-ext-install -j$(nproc) iconv \
-    && docker-php-ext-configure gd \
+    && docker-php-ext-configure gd --with-freetype \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install mysqli pdo pdo_mysql \
