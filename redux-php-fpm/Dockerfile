@@ -20,4 +20,6 @@ RUN sed -i \
 -e 's/^;\(security.limit_extensions = .php .php3 .php4 .php5 .php7\)/\1 .phtml/' \
 /usr/local/etc/php-fpm.d/www.conf
 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
 EXPOSE 9000
