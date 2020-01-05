@@ -24,13 +24,14 @@ First you need to set up a host machine with docker and docker compose (go to ht
  * Ensure your application folder (e.g. `/synapp`) is present on `www-data` folder, build and configured as described on [the app's main repo][4].
  * Ensure your server public certificate, private key, and ca-bundle are present on `redux-httpd/certificates` folder
  * Make sure `/redux-mariadb/mariadb.env` is created and populated with the env vars defined on `/redux-mariadb/mariadb.env.template`
+ * Make sure `/redux-httpd/httpd.env` is created and populated with the env vars defined on `/redux-httpd/httpd.env.template`
 
 When all of the above is done, deploy using `docker-compose up`.
 
 
 ## Change Log
 
- * 0.1.0 - First public release
+ * See [CHANGELOG.md](CHANGELOG.md)
 
 ## Known Issues
 
