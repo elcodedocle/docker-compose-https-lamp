@@ -1,4 +1,5 @@
 redux-httpd/certificates/*
+redux-httpd/*.env
 redux-mariadb/*.env
 db-data/*
 www-data/*

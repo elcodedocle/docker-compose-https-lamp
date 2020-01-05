@@ -15,6 +15,8 @@ services:
             - ./www-data:/usr/local/apache2/htdocs
         links:
             - 'redux-php-fpm'
+        env_file:
+            - ./redux-httpd/httpd.env
 
     redux-php-fpm:
         image: redux-php-fpm:latest
