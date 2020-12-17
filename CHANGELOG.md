@@ -1,3 +1,6 @@
+# Version 0.2.1
+- Upgrade to mcrypt 1.0.4 for php 8 support
+
 # Version 0.2.0
 - Use redux-httpd/httpd.env for dynamic server name, alias and app path config
 
