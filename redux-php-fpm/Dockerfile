@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install mysqli pdo pdo_mysql \
     && docker-php-ext-install zip
 
-RUN pecl install mcrypt-1.0.3 && docker-php-ext-enable mcrypt
+RUN pecl install mcrypt-1.0.4 && docker-php-ext-enable mcrypt
 
 RUN sed -i \
 -e 's/^;\(security.limit_extensions = .php .php3 .php4 .php5 .php7\)/\1 .phtml/' \
