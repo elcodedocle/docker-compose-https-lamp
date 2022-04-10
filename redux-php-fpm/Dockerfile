@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
         libonig-dev \
         libzip-dev \
-        sendmail \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype \
     && docker-php-ext-install -j$(nproc) gd \
@@ -20,11 +19,5 @@ RUN sed -i \
 /usr/local/etc/php-fpm.d/www.conf
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-
-RUN echo "sendmail_path=/usr/sbin/sendmail -t -i" >> /usr/local/etc/php/conf.d/sendmail.ini 
-
-RUN sed -i '/#!\/bin\/sh/aservice sendmail restart' /usr/local/bin/docker-php-entrypoint
-
-RUN sed -i '/#!\/bin\/sh/aecho "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint
 
 EXPOSE 9000
